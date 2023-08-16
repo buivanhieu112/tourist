@@ -1,0 +1,102 @@
+.hero-slider {
+  height: calc(100vh - #{$header-height});
+  max-height: 1080px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 50px;
+  margin-top: 120px;
+  bottom: 0;
+  right: 0;
+
+  @include tablet {
+    margin-top: calc(#{$header-tablet-height} * -1);
+  }
+
+  @include mobile {
+    margin-top: calc(#{$header-mobile-height} * -1);
+  }
+
+  &__item {
+    @include flex(center, space-between);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: visible;
+    }
+
+    &__image {
+      height: 100%;
+      width: 100%;
+      pointer-events: none;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    &__info {
+      padding-left: 50px;
+      width: 58.33%;
+      color: $main-bg;
+
+      &__title,
+      &__description {
+        margin-bottom: 20px;
+
+        @include tablet {
+          margin-bottom: 5px;
+        }
+      }
+      &__title {
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+        font-weight: 600;
+        font-size: 4.5rem;
+        line-height: 6.7rem;
+        overflow: hidden;
+      }
+
+      &__description {
+        font-size: 1.5rem;
+        line-height: 2.25rem;
+        overflow: hidden;
+      }
+
+      &__btn {
+        overflow: hidden;
+      }
+    }
+  }
+  &__control {
+    @include flex(center, center);
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &__item ~ &__item {
+      margin-left: 10px;
+    }
+
+    &__item {
+      @include flex(center, center);
+      font-size: 5rem;
+      color: $main-bg;
+      cursor: pointer;
+
+      &:hover {
+        color: $main-color;
+      }
+
+      .index {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
